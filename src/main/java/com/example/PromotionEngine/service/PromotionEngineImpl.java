@@ -1,6 +1,7 @@
 package com.example.PromotionEngine.service;
 
 import com.example.PromotionEngine.modal.Cart;
+import com.example.PromotionEngine.modal.CartItem;
 import com.example.PromotionEngine.promotion.Promotion;
 
 import java.util.List;
@@ -13,6 +14,17 @@ public class PromotionEngineImpl implements PromotionEngine{
     }
     @Override
     public double calculateTotal(Cart cart) {
-        return 0;
+        double total = 0;
+
+        for (Promotion promotion : promotions) {
+            total += promotion.apply(cart);
+        }
+
+        for (CartItem item : cart.getItems()) {
+            if (item.getQuantity() > 0) {
+                total += item.getQuantity() * item.getSku().getUnitPrice();
+            }
+        }
+        return total;
     }
 }
