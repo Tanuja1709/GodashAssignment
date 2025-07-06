@@ -35,4 +35,15 @@ public class PromotionEngineApplicationTests {
 		double total = promotionEngine.calculateTotal(cart);
 		Assertions.assertEquals(100, total);
 	}
+
+	@Test
+	public void testScenarioB() {
+		Cart cart = new Cart(Arrays.asList(
+				new CartItem(new SKU("A", 50), 5),
+				new CartItem(new SKU("B", 30), 5),
+				new CartItem(new SKU("C", 20), 1)
+		));
+		double total = promotionEngine.calculateTotal(cart);
+		Assertions.assertEquals(370, total);
+	}
 }
