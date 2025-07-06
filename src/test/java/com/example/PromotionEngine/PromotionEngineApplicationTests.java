@@ -46,7 +46,7 @@ public class PromotionEngineApplicationTests {
 		double total = promotionEngine.calculateTotal(cart);
 		Assertions.assertEquals(370, total);
 	}
-	
+
 	@Test
 	public void testScenarioC() {
 		Cart cart = new Cart(Arrays.asList(
