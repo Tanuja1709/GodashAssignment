@@ -4,6 +4,7 @@ import com.example.PromotionEngine.modal.Cart;
 import com.example.PromotionEngine.modal.CartItem;
 import com.example.PromotionEngine.modal.SKU;
 import com.example.PromotionEngine.promotion.BulkPromotion;
+import com.example.PromotionEngine.promotion.ComboPromotion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

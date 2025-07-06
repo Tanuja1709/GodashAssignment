@@ -1,6 +1,7 @@
 package com.example.PromotionEngine.promotion;
 
 import com.example.PromotionEngine.modal.Cart;
+import com.example.PromotionEngine.modal.CartItem;
 import com.example.PromotionEngine.modal.SKU;
 
 public class ComboPromotion implements Promotion{
@@ -17,6 +18,21 @@ public class ComboPromotion implements Promotion{
 
     @Override
     public double apply(Cart cart) {
-        return 0;
+        CartItem item1 = null, item2 = null;
+
+        for (CartItem item : cart.getItems()) {
+            if (item.getSku().equals(sku1)) item1 = item;
+            if (item.getSku().equals(sku2)) item2 = item;
+        }
+
+        if (item1 == null || item2 == null) return 0;
+
+        int combos = Math.min(item1.getQuantity(), item2.getQuantity());
+        double total = combos * comboPrice;
+
+        item1.setQuantity(item1.getQuantity() - combos);
+        item2.setQuantity(item2.getQuantity() - combos);
+
+        return total;
     }
 }
