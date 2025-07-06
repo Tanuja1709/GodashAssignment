@@ -26,9 +26,11 @@ public class BulkPromotion implements Promotion {
                 int remaining = qty % requiredQty;
 
                 total += numOfDeals * discountedPrice + remaining * sku.getUnitPrice();
+
                 item.setQuantity(0);
             }
         }
+
         return total;
     }
 
